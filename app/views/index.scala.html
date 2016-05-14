@@ -1,0 +1,55 @@
+@import domains.BoardModel
+
+@(message: List[BoardModel])
+
+<!DOCTYPE html>
+<html>
+<head lang="kr">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div></div>
+
+    <div>
+        <div style="margin-bottom: 10px; font-size: 9pt;">
+            <a href="/write">게시판 글쓰기</a>
+        </div>
+        <div style="font-size: 9pt;">
+            <table border="0" cellpadding="5px" >
+                <tr>
+                    <td>
+                        번호
+                    </td>
+                    <td>
+                        작성자
+                    </td>
+                    <td>
+                        제목
+                    </td>
+                    <td>
+                        등록일
+                    </td>
+                </tr>
+                @for(board <- message) {
+                    <tr>
+                        <td>
+                            @board.no <br>
+                        </td>
+                        <td>
+                            @board.writer
+                        </td>
+                        <td>
+                            <a href="/detailView?no=@board.no">@board.title</a>
+                        </td>
+                        <td>
+                    </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

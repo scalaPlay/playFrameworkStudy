@@ -1,0 +1,54 @@
+@import domains.CommentModel
+@import domains.BoardModel
+
+@(model: BoardModel)(commentList: List[CommentModel])
+
+<!DOCTYPE html>
+<html>
+<head lang="kr">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+    <div style="font-size: 9pt;">
+        <table cellpadding="5px">
+            <tr>
+                <td>
+                    작성자
+                </td>
+                <td>
+                    @model.writer
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    제목
+                </td>
+                <td>
+                    @model.title
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    @model.content
+                </td>
+            </tr>
+        </table>
+        @if(!commentList.isEmpty) {
+            <div style="margin: 10px; background-color: #aeaeae; padding: 8px; border-radius: 3px;">
+            @for(commentModel: CommentModel <- commentList) {
+                <div style="margin-bottom: 8px;">
+                    <b>@commentModel.replyWriter</b> 님이 덧글을 달았습니다.
+                </div>
+                <div>@commentModel.comment</div>
+            }
+            </div>
+        }
+    </div>
+
+    <div style="font-size: 9pt; margin-top: 12px;">
+        <a href="main">목록 보기</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+    <div style="font-size: 9pt; margin-bottom: 12px;">
+        게시판 글을 등록할 수 있는 폼입니다.
+    </div>
+
+    <form id="boardWriteForm" name="boardWriteForm" method="post" action="/writeContent">
+        <div style="margin-bottom: 8px; font-size: 9pt;">
+            작성자 : <input type="text" id="writer" name="writer"> <br />
+            비밀번호 : <input type="password" id="password" name="password"> <br />
+            글 제목 : <input type="text" id="title" name="title"> <br />
+            내용 : <textarea id="content" name="content">
+            </textarea>
+        </div>
+
+        <input type="submit" id="writeBoard">
+    </form>
+</body>
+</html>
