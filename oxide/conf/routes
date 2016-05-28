@@ -3,9 +3,9 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                    controllers.core.MainController.index
+GET         /                    controllers.core.MainController.index(page: Int = 1)
 
-GET         /main                controllers.core.MainController.index
+GET         /main                controllers.core.MainController.index(page: Int)
 
 GET         /write               controllers.board.BoardController.write
 

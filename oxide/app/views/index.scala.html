@@ -1,6 +1,6 @@
 @import domains.BoardModel
 
-@(message: List[BoardModel])
+@(message: List[BoardModel])(count: Int)(page: Int)
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,9 @@
     <div></div>
 
     <div>
+        <div>
+            page : @page
+        </div>
         <div style="margin-bottom: 10px; font-size: 9pt;">
             <a href="/write">게시판 글쓰기</a>
         </div>
@@ -43,12 +46,34 @@
                             <a href="/detailView?no=@board.no">@board.title</a>
                         </td>
                         <td>
-                    </td>
+                            @board.regDate
+                        </td>
 
                     </tr>
                 }
             </table>
+
+            <div>
+                @if(count%10 == 0) {
+                    @for(i <- 1 to count/10) {
+                        @if(i == page) {
+                            <b>@i</b>
+                        } else {
+                            <a href="/main?page=@i">@i</a>
+                        }
+                    }
+                } else {
+                    @for(i <- 1 to count/10 + 1) {
+                        @if(i == page) {
+                            <b>@i</b>
+                        } else {
+                            <a href="/main?page=@i">@i</a>
+                        }
+                    }
+                }
+            </div>
         </div>
+
 
     </div>
 </body>

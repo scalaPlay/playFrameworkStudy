@@ -56,14 +56,14 @@ class BoardController @Inject() (db: Database) extends Controller {
       try {
         var tmpModel: BoardModel = null
 
-        val detailBoardQuery = "SELECT no, writer, title, content, hidden_fl AS hiddenFl FROM play.board WHERE no=" + no + ";"
+        val detailBoardQuery = "SELECT no, writer, title, content, hidden_fl AS hiddenFl, reg_date AS regDate FROM play.board WHERE no=" + no + ";"
 
         println(detailBoardQuery)
 
         val boardResultModel = executeQuery(detailBoardQuery)
 
         while (boardResultModel.next()) {
-          tmpModel = new BoardModel(boardResultModel.getString("no").toInt, boardResultModel.getString("writer"), boardResultModel.getString("title"), boardResultModel.getString("content"), boardResultModel.getString("hiddenFl"))
+          tmpModel = new BoardModel(boardResultModel.getString("no").toInt, boardResultModel.getString("writer"), boardResultModel.getString("title"), boardResultModel.getString("content"), boardResultModel.getString("hiddenFl"), boardResultModel.getString("regDate"))
         }
 
         tmpModel
