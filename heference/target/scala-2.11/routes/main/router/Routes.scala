@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/Ikarious/dev/scala/project/playframework/scalaWebPro/conf/routes
-// @DATE:Sat May 14 14:55:55 KST 2016
+// @SOURCE:/Users/Ikarious/dev/scala/project/playFrameworkStudy/heference/conf/routes
+// @DATE:Sat May 28 15:11:52 KST 2016
 
 package router
 

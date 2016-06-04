@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Sqlite (Xerial) - identifier.sqlite" uuid="b7df8b06-a5e0-4998-ba2b-f49cddd39789">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+  </component>
+</project>
