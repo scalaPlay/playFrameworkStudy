@@ -7,53 +7,70 @@
 <head lang="kr">
     <meta charset="UTF-8">
     <title></title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript">
+        $(window).ready(function() {
+            $("[id^=row_]" ).hover(
+            function(){
+                $(this).attr("style", "background-color: #eaeaea;");
+            },
+            function(){
+                $(this).attr("style", "background-color: #ffffff;");
+            })
+        });
+
+        $.detailView = function(no) {
+            location.href = "/detailView?no=" + no;
+        }
+
+    </script>
 </head>
 <body>
     <div></div>
 
     <div>
-        <div>
-            page : @page
-        </div>
-        <div style="margin-bottom: 10px; font-size: 9pt;">
-            <a href="/write">게시판 글쓰기</a>
-        </div>
+
         <div style="font-size: 9pt;">
-            <table border="0" cellpadding="5px" >
+            <table border="0" cellpadding="3px" cellspacing="0px" width="100%" >
                 <tr>
-                    <td>
+                    <td style="border-bottom: #000000 1px solid; text-align: center;">
                         번호
                     </td>
-                    <td>
+                    <td style="border-bottom: #000000 1px solid; text-align: center;">
                         작성자
                     </td>
-                    <td>
+                    <td style="border-bottom: #000000 1px solid; text-align: center;">
                         제목
                     </td>
-                    <td>
+                    <td style="border-bottom: #000000 1px solid; text-align: center;">
                         등록일
                     </td>
                 </tr>
                 @for(board <- message) {
-                    <tr>
-                        <td>
+                    <tr id="row_@board.no">
+                        <td style="border-bottom: #000000 1px solid; text-align: center;">
                             @board.no <br>
                         </td>
-                        <td>
+                        <td style="border-bottom: #000000 1px solid; text-align: center;">
                             @board.writer
                         </td>
-                        <td>
-                            <a href="/detailView?no=@board.no">@board.title</a>
+                        <td style="border-bottom: #000000 1px solid;">
+                            <div style="cursor: pointer;" onclick="$.detailView(@board.no)">
+                                @board.title
+                            </div>
                         </td>
-                        <td>
+                        <td style="border-bottom: #000000 1px solid; text-align: center;">
                             @board.regDate
                         </td>
 
                     </tr>
                 }
             </table>
+            <div style="margin-top: 8px;">
 
-            <div>
+                <div style="float: left;">
                 @if(count%10 == 0) {
                     @for(i <- 1 to count/10) {
                         @if(i == page) {
@@ -71,7 +88,12 @@
                         }
                     }
                 }
+                </div>
+                <div style="float: right; font-size: 9pt;">
+                    <a href="/write">글쓰기</a>
+                </div>
             </div>
+
         </div>
 
 
