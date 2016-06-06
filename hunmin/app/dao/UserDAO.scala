@@ -33,5 +33,4 @@ class UserDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) 
 
     override def * = (id,email,password,fullname,isAdmin) <> (User.tupled , User.unapply _)
   }
-
 }

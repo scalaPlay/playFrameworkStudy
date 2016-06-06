@@ -5,17 +5,46 @@
   <title></title>
 </head>
 <body>
-    <div style="font-size: 9pt; margin-bottom: 12px;">
+    <div style="font-size: 9pt; margin-bottom: 12px; padding: 10px; background-color: #eaeaea; border-radius: 4px;">
         게시판 글을 등록할 수 있는 폼입니다.
     </div>
 
     <form id="boardWriteForm" name="boardWriteForm" method="post" action="/writeContent">
         <div style="margin-bottom: 8px; font-size: 9pt;">
-            작성자 : <input type="text" id="writer" name="writer"> <br />
-            비밀번호 : <input type="password" id="password" name="password"> <br />
-            글 제목 : <input type="text" id="title" name="title"> <br />
-            내용 : <textarea id="content" name="content">
-            </textarea>
+            <table>
+                <tr>
+                    <td>
+                        작성자
+                    </td>
+                    <td>
+                        <input type="text" id="writer" name="writer" style="width: 100%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        비밀번호
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password" style="width: 100%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        글 제목
+                    </td>
+                    <td>
+                        <input type="text" id="title" name="title" style="width: 100%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        내용
+                    </td>
+                    <td>
+                        <textarea id="content" name="content" style="width: 100%;"></textarea>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <input type="submit" id="writeBoard">
