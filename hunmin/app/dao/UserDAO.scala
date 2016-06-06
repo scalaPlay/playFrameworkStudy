@@ -15,13 +15,15 @@ import scala.concurrent.Future
 class UserDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends HasDatabaseConfigProvider[JdbcProfile]{
   import driver.api._
 
-  private val Users = TableQuery[UserTable]
+  private val users = TableQuery[UserTable]
 
-  def all(): Future[Seq[User]] = db.run(Users.result)
+  def all(): Future[Seq[User]] = db.run(users.result)
+
+  def detail(id: Int): Future[Option[User]] = db.run(users.filter(_.id === id).result.headOption)
 
   // _ 는 모두를 의미
   def insert(user: User): Future[Unit] =
-    db.run(Users += user).map(_ => ())
+    db.run(users += user).map(_ => ())
 
   private class UserTable(tag: Tag) extends Table[User](tag,"User") {
 

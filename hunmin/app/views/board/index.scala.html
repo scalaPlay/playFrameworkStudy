@@ -1,15 +1,10 @@
 @(title: String)(users: Seq[User])
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>@title</title>
-    </head>
-    <body>
-        <table>
-            <tr><th>id</th><th>email</th><th>fullname</th></tr>
-            @for(user <- users) {
-                <tr><td>@user.id</td> <td>@user.email</td><td>@user.fullname</td> </tr>
-            }
-        </table>
-    </body>
-</html>
+
+@main(title) {
+    <table>
+        <tr><th>id</th><th>email</th><th>fullname</th></tr>
+        @for(user <- users) {
+            <tr><td>@user.id</td> <td>@user.email</td> <td>@user.fullname</td> </tr>
+        }
+    </table>
+}
