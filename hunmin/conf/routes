@@ -3,7 +3,11 @@
 # ~~~~
 
 # An example controller showing a sample home page
+# board
 GET     /                           controllers.BoardController.index
+GET     /:id                        controllers.BoardController.detail(id:Int)
+
+
 GET     /echo                           controllers.HomeController.echo
 GET     /join                       controllers.BoardController.join
 # An example controller showing how to use dependency injection

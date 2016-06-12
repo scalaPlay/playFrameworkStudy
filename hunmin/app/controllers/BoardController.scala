@@ -2,8 +2,9 @@ package controllers
 
 import javax.inject._
 
-import play.api.db.Database
+import dao.UserDAO
 import play.api.mvc.{Controller, Action}
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 
 /**
@@ -11,26 +12,21 @@ import play.api.mvc.{Controller, Action}
   */
 
 @Singleton
-class BoardController @Inject()(db: Database) extends Controller{
+class BoardController @Inject()(userDao : UserDAO) extends Controller{
 
-  def index = Action {
-    var outString = "Number is "
-    val conn = db.getConnection()
+  def index = Action.async(
+    userDao.all().map(users => Ok(views.html.board.index("aaaa")(users)))
+  )
 
-    try {
-      val stmt = conn.createStatement()
-      val rs = stmt.executeQuery("SELECT * from User")
-
-      while (rs.next()) {
-        outString += rs.getString("name")
+  def detail(id: Int) = Action.async {
+    val user = userDao.detail(id)
+    user.map { user =>
+      user match {
+        case Some(c) => Ok(views.html.board.detail(c))
+        case None    => NotFound
       }
-    } finally {
-      conn.close()
     }
-
-    Ok(outString)
   }
-
 
   def join = Action {
     Ok("hello")
